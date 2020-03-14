@@ -1,0 +1,101 @@
+.splash{
+  display: flex;
+  width:100vw;
+  height:2000px;
+  flex-direction: column;
+  
+  align-items: center;
+  
+}
+
+.navbar{
+  height: 12%;
+  background-color: white;
+  width: 100%;
+  position: fixed;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.sec1{
+  height: 80%;
+  width: 100%;
+  background-color: blue;
+
+}
+
+.sec2{
+  height: 80%;
+  width: 100%;
+  background-color: purple;
+}
+
+.sec3{
+  height: 80%;
+  width: 100%;
+  background-color: yellow;
+}
+
+.footer{
+  height: 10%;
+  width: 100%;
+  background-color: aqua;
+}
+
+.name{
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.sessions{
+  display: flex;
+  align-items: center;
+  font-family: 'Sen', sans-serif;
+}
+
+.logo{
+  margin-left: 10px;
+  margin-right: 4px;
+  width: 25px;
+  height: 25px;
+  background-image: asset-url('slack-logo.png');
+  background-size: cover; 
+}
+
+.scooch{
+  width: 100px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Sen', sans-serif;
+  font-size: 30px;
+  font-weight:bolder; 
+}
+
+.signin{
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.start{
+  // border: 1px solid black;
+  height: 40px;
+  width: 130px;
+  border-radius: 5px;
+  align-items: center;
+  display: flex;
+  color: white;
+  background-color: #612069;
+  justify-content: center;
+  margin-right: 10px;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.start:hover{
+  background-color: #3F1140;
+  cursor: pointer;
+}
