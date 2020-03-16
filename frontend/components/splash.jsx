@@ -16,8 +16,8 @@ class Splash extends React.Component{
           </div>
 
           <div className="sessions">
-            <NavLink to="/signup" className="signin">Sign In</NavLink>            
-            <NavLink to="/login" className="start">GET STARTED</NavLink>            
+            <NavLink to="/login" className="signin">Sign In</NavLink>            
+            <NavLink to="/signup" className="start">GET STARTED</NavLink>            
           </div>
         </div>
         <div className="sec1">Section 1</div>

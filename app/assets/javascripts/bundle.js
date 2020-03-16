@@ -481,10 +481,10 @@ var Splash = /*#__PURE__*/function (_React$Component) {
       }, "scooch")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "sessions"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["NavLink"], {
-        to: "/signup",
+        to: "/login",
         className: "signin"
       }, "Sign In"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["NavLink"], {
-        to: "/login",
+        to: "/signup",
         className: "start"
       }, "GET STARTED"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "sec1"
