@@ -3,6 +3,8 @@ import { Route, Switch, Link, NavLink } from "react-router-dom";
 import SplashContainer from './components/splash_container.js';
 import LoginContainer from './components/login_form_container';
 import SignupContainer from './components/signup_form_container'
+import {AuthRoute, ProtectedRoute} from './util/routes_util';
+import Chat from './components/chat'
 
 const test = () => {
   return(
@@ -17,6 +19,7 @@ const App = () => (
     <Route exact path="/signup" component={SignupContainer} />
     <Route path="/login" component={LoginContainer} />
     <Route path="/" component={SplashContainer}/>
+    <AuthRoute exact path="/users" component={Chat}/>
   </Switch>
   
   </div>

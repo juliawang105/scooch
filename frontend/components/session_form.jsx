@@ -37,7 +37,7 @@ class SessionForm extends React.Component{
       form = <div>signup</div>
     }
 
-    debugger
+    // debugger
     return(
       <div>{form}</div>
       
