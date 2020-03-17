@@ -179,7 +179,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_login_form_container__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/login_form_container */ "./frontend/components/login_form_container.js");
 /* harmony import */ var _components_signup_form_container__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/signup_form_container */ "./frontend/components/signup_form_container.js");
 /* harmony import */ var _util_routes_util__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./util/routes_util */ "./frontend/util/routes_util.js");
-/* harmony import */ var _components_chat__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./components/chat */ "./frontend/components/chat.jsx");
+/* harmony import */ var _components_chat_container__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./components/chat_container */ "./frontend/components/chat_container.js");
 
 
 
@@ -205,15 +205,17 @@ var App = function App() {
     path: "/signup",
     component: _components_signup_form_container__WEBPACK_IMPORTED_MODULE_4__["default"]
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+    exact: true,
     path: "/login",
     component: _components_login_form_container__WEBPACK_IMPORTED_MODULE_3__["default"]
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+    exact: true,
     path: "/",
     component: _components_splash_container_js__WEBPACK_IMPORTED_MODULE_2__["default"]
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_routes_util__WEBPACK_IMPORTED_MODULE_5__["AuthRoute"], {
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_util_routes_util__WEBPACK_IMPORTED_MODULE_5__["ProtectedRoute"], {
     exact: true,
     path: "/users",
-    component: _components_chat__WEBPACK_IMPORTED_MODULE_6__["default"]
+    component: _components_chat_container__WEBPACK_IMPORTED_MODULE_6__["default"]
   })));
 };
 
@@ -264,6 +266,7 @@ var Chat = /*#__PURE__*/function (_React$Component) {
   _createClass(Chat, [{
     key: "render",
     value: function render() {
+      debugger;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Logged In");
     }
   }]);
@@ -273,6 +276,31 @@ var Chat = /*#__PURE__*/function (_React$Component) {
 
 ;
 /* harmony default export */ __webpack_exports__["default"] = (Chat);
+
+/***/ }),
+
+/***/ "./frontend/components/chat_container.js":
+/*!***********************************************!*\
+  !*** ./frontend/components/chat_container.js ***!
+  \***********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _chat__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./chat */ "./frontend/components/chat.jsx");
+
+
+
+var mSTP = function mSTP(state) {
+  debugger;
+  return {
+    state: ""
+  };
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(mSTP, null)(_chat__WEBPACK_IMPORTED_MODULE_1__["default"]));
 
 /***/ }),
 
@@ -766,17 +794,19 @@ window.addEventListener('DOMContentLoaded', function () {
   var store;
 
   if (window.currentUser) {
+    //  debugger
     var preloadedState = {
       entities: {
         users: window.currentUser.users
       },
       session: {
-        id: Object.keys(window.currentUser.users)[0]
+        id: window.currentUser.id
       }
     };
     store = Object(_store_store__WEBPACK_IMPORTED_MODULE_3__["default"])(preloadedState);
     delete window.currentUser;
   } else {
+    //  debugger
     store = Object(_store_store__WEBPACK_IMPORTED_MODULE_3__["default"])();
   }
 
@@ -830,6 +860,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ProtectedRoute", function() { return ProtectedRoute; });
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_2__);
+
 
 
 
@@ -838,11 +871,11 @@ var Auth = function Auth(_ref) {
       path = _ref.path,
       loggedIn = _ref.loggedIn,
       exact = _ref.exact;
-  return React.createElement(Route, {
+  return react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_0__["Route"], {
     path: path,
     exact: exact,
     render: function render(props) {
-      return !loggedIn ? React.createElement(Component, props) : React.createElement(Redirect, {
+      return !loggedIn ? react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(Component, props) : react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_0__["Redirect"], {
         to: "/"
       });
     }
@@ -855,11 +888,11 @@ var Protected = function Protected(_ref2) {
       path = _ref2.path,
       loggedIn = _ref2.loggedIn,
       exact = _ref2.exact;
-  return React.createElement(Route, {
+  return react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_0__["Route"], {
     path: path,
     exact: exact,
     render: function render(props) {
-      return loggedIn ? React.createElement(Component, props) : React.createElement(Redirect, {
+      return loggedIn ? react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(Component, props) : react__WEBPACK_IMPORTED_MODULE_2___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_0__["Redirect"], {
         to: "/login"
       });
     }

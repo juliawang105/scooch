@@ -6,6 +6,7 @@ class Chat extends React.Component{
   }
 
   render(){
+    debugger
     return(
       <div>Logged In</div>
     )
