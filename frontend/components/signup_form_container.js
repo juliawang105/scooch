@@ -11,7 +11,7 @@ const mSTP = state => {
 const mDTP = dispatch => {
   return (
     {
-      signup: user => dispatch(signup(user))
+      processForm: user => dispatch(signup(user))
     }
   )
 };

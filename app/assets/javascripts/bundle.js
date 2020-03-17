@@ -148,7 +148,7 @@ var logout = function logout() {
 };
 var signup = function signup(user) {
   return function (dispatch) {
-    return SessionAPIUtil.signup(user).then(function (res) {
+    return _util_session_util__WEBPACK_IMPORTED_MODULE_0__["signup"](user).then(function (res) {
       return dispatch(receiveCurrentUser(res));
     }, function (errors) {
       return dispatch(receiveErrors(errors.responseJSON));
@@ -159,42 +159,6 @@ var clearErrors = function clearErrors() {
   return function (dispatch) {
     return dispatch(receiveErrors([]));
   };
-};
-
-/***/ }),
-
-/***/ "./frontend/actions/user_actions.js":
-/*!******************************************!*\
-  !*** ./frontend/actions/user_actions.js ***!
-  \******************************************/
-/*! exports provided: RECEIVE_USER, fetchUser, createUser */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RECEIVE_USER", function() { return RECEIVE_USER; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchUser", function() { return fetchUser; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createUser", function() { return createUser; });
-/* harmony import */ var _util_user_util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util/user_util */ "./frontend/util/user_util.js");
-
-var RECEIVE_USER = "RECEIVE_USER";
-
-var receiveUser = function receiveUser(user) {
-  return {
-    type: RECEIVE_USER,
-    user: user
-  };
-};
-
-var fetchUser = function fetchUser(userId) {
-  return function (dispatch) {
-    return _util_user_util__WEBPACK_IMPORTED_MODULE_0__["fetchUser"](userId).then(function (res) {
-      return dispatch(receiveUser(res));
-    });
-  };
-};
-var createUser = function createUser(user) {
-  return;
 };
 
 /***/ }),
@@ -336,7 +300,7 @@ var mSTP = function mSTP(state) {
 
 var mDTP = function mDTP(dispatch) {
   return {
-    login: function login(user) {
+    processForm: function processForm(user) {
       return dispatch(Object(_actions_session_actions__WEBPACK_IMPORTED_MODULE_2__["login"])(user));
     }
   };
@@ -369,9 +333,9 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
 
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
@@ -391,7 +355,8 @@ var SessionForm = /*#__PURE__*/function (_React$Component) {
 
     if (_this.props.form === 'signup') {
       _this.state = {
-        username: "",
+        f_name: "",
+        l_name: "",
         email: "",
         password: ""
       };
@@ -403,6 +368,7 @@ var SessionForm = /*#__PURE__*/function (_React$Component) {
     }
 
     ;
+    _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -416,12 +382,21 @@ var SessionForm = /*#__PURE__*/function (_React$Component) {
       };
     }
   }, {
+    key: "handleSubmit",
+    value: function handleSubmit() {
+      event.preventDefault();
+      this.props.processForm(this.state);
+    }
+  }, {
     key: "render",
     value: function render() {
+      var text = this.props.form.toUpperCase();
       var form;
 
       if (this.props.form === 'login') {
-        form = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        form = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+          onSubmit: this.handleSubmit
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
           onChange: this.handleInput('email'),
           type: "text",
           name: "",
@@ -433,9 +408,35 @@ var SessionForm = /*#__PURE__*/function (_React$Component) {
           name: "",
           id: "",
           placeholder: "password"
-        }));
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", null, text));
       } else {
-        form = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "signup");
+        form = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+          onSubmit: this.handleSubmit
+        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+          onChange: this.handleInput("f_name"),
+          type: "text",
+          name: "",
+          id: "",
+          placeholder: "first name"
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+          onChange: this.handleInput("l_name"),
+          type: "text",
+          name: "",
+          id: "",
+          placeholder: "last name"
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+          onChange: this.handleInput("email"),
+          type: "text",
+          name: "",
+          id: "",
+          placeholder: "email"
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+          onChange: this.handleInput("password"),
+          type: "text",
+          name: "",
+          id: "",
+          placeholder: "password"
+        }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", null, text));
       } // debugger
 
 
@@ -475,7 +476,7 @@ var mSTP = function mSTP(state) {
 
 var mDTP = function mDTP(dispatch) {
   return {
-    signup: function signup(user) {
+    processForm: function processForm(user) {
       return dispatch(Object(_actions_session_actions__WEBPACK_IMPORTED_MODULE_2__["signup"])(user));
     }
   };
@@ -543,10 +544,10 @@ var Splash = /*#__PURE__*/function (_React$Component) {
       }, "scooch")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "sessions"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["NavLink"], {
-        to: "/signup",
+        to: "/login",
         className: "signin"
       }, "Sign In"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["NavLink"], {
-        to: "/login",
+        to: "/signup",
         className: "start"
       }, "GET STARTED"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "sec1"
@@ -610,13 +611,10 @@ var mDTP = function mDTP(dispatch) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
 /* harmony import */ var _users_reducer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./users_reducer */ "./frontend/reducers/users_reducer.js");
-/* harmony import */ var _session_reducer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./session_reducer */ "./frontend/reducers/session_reducer.js");
-
 
 
 var entitiesReducer = Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers"])({
-  users: _users_reducer__WEBPACK_IMPORTED_MODULE_1__["usersReducer"],
-  session: _session_reducer__WEBPACK_IMPORTED_MODULE_2__["sessionReducer"]
+  users: _users_reducer__WEBPACK_IMPORTED_MODULE_1__["usersReducer"]
 });
 /* harmony default export */ __webpack_exports__["default"] = (entitiesReducer);
 
@@ -633,10 +631,13 @@ var entitiesReducer = Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
 /* harmony import */ var _entities_reducer__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./entities_reducer */ "./frontend/reducers/entities_reducer.js");
+/* harmony import */ var _session_reducer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./session_reducer */ "./frontend/reducers/session_reducer.js");
+
 
 
 var rootReducer = Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers"])({
-  entities: _entities_reducer__WEBPACK_IMPORTED_MODULE_1__["default"]
+  entities: _entities_reducer__WEBPACK_IMPORTED_MODULE_1__["default"],
+  session: _session_reducer__WEBPACK_IMPORTED_MODULE_2__["sessionReducer"]
 });
 /* harmony default export */ __webpack_exports__["default"] = (rootReducer);
 
@@ -689,7 +690,7 @@ var sessionReducer = function sessionReducer() {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "usersReducer", function() { return usersReducer; });
-/* harmony import */ var _actions_user_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/user_actions */ "./frontend/actions/user_actions.js");
+/* harmony import */ var _actions_session_actions__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../actions/session_actions */ "./frontend/actions/session_actions.js");
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 
@@ -699,8 +700,9 @@ var usersReducer = function usersReducer() {
   Object.freeze(state);
 
   switch (action.type) {
-    case _actions_user_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_USER"]:
-      return Object.assign({}, state, _defineProperty({}, action.user.id, action.user));
+    case _actions_session_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_CURRENT_USER"]:
+      // debugger
+      return Object.assign({}, state, _defineProperty({}, action.currentUser.id, action.currentUser));
     //brackets are evaluated first before the key is set. we don't want the words "action.user.id"
 
     default:
@@ -761,7 +763,23 @@ __webpack_require__.r(__webpack_exports__);
 
 window.addEventListener('DOMContentLoaded', function () {
   // debugger
-  var store = Object(_store_store__WEBPACK_IMPORTED_MODULE_3__["default"])();
+  var store;
+
+  if (window.currentUser) {
+    var preloadedState = {
+      entities: {
+        users: window.currentUser.users
+      },
+      session: {
+        id: Object.keys(window.currentUser.users)[0]
+      }
+    };
+    store = Object(_store_store__WEBPACK_IMPORTED_MODULE_3__["default"])(preloadedState);
+    delete window.currentUser;
+  } else {
+    store = Object(_store_store__WEBPACK_IMPORTED_MODULE_3__["default"])();
+  }
+
   window.store = store;
   var root = document.getElementById('root');
   react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_root__WEBPACK_IMPORTED_MODULE_2__["default"], {
@@ -896,25 +914,6 @@ var logout = function logout() {
   return $.ajax({
     url: "/api/session",
     method: "DELETE"
-  });
-};
-
-/***/ }),
-
-/***/ "./frontend/util/user_util.js":
-/*!************************************!*\
-  !*** ./frontend/util/user_util.js ***!
-  \************************************/
-/*! exports provided: fetchUser */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchUser", function() { return fetchUser; });
-var fetchUser = function fetchUser(userId) {
-  return $.ajax({
-    url: "/api/users/".concat(userId),
-    method: "GET"
   });
 };
 

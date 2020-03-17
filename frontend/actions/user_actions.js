@@ -8,12 +8,10 @@ const receiveUser = user => ({
 });
 
 export const fetchUser = userId => dispatch => {
+  debugger
   return UserUtil.fetchUser(userId)
     .then(res => dispatch(receiveUser(res)))
 };
 
-export const createUser = user => {
-  return
-}
 
 

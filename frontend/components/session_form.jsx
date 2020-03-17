@@ -6,7 +6,8 @@ class SessionForm extends React.Component{
 
     if(this.props.form === 'signup'){
       this.state = {
-        username: "",
+        f_name: "",
+        l_name:"",
         email: "",
         password: ""
       }
@@ -16,6 +17,8 @@ class SessionForm extends React.Component{
         password: ""
       }
     };
+
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleInput(field){
@@ -24,17 +27,58 @@ class SessionForm extends React.Component{
     };
   };
 
+  handleSubmit(){
+    event.preventDefault();
+    this.props.processForm(this.state)
+  }
+
   render(){
+    let text = this.props.form.toUpperCase()
     let form;
     if(this.props.form === 'login'){
       form = 
-      <form>
+      <form onSubmit={this.handleSubmit}>
         <input onChange={this.handleInput('email')} type="text" name="" id="" placeholder="email"/>
         <input onChange={this.handleInput('password')}type="text" name="" id="" placeholder="password"/>
+        <button>{text}</button>
       </form>
       
     } else {
-      form = <div>signup</div>
+      form = (
+        <form onSubmit={this.handleSubmit}>
+          <input
+            onChange={this.handleInput("f_name")}
+            type="text"
+            name=""
+            id=""
+            placeholder="first name"
+          />
+
+          <input
+            onChange={this.handleInput("l_name")}
+            type="text"
+            name=""
+            id=""
+            placeholder="last name"
+          />
+
+          <input
+            onChange={this.handleInput("email")}
+            type="text"
+            name=""
+            id=""
+            placeholder="email"
+          />
+          <input
+            onChange={this.handleInput("password")}
+            type="text"
+            name=""
+            id=""
+            placeholder="password"
+          />
+          <button>{text}</button>
+        </form>
+      );
     }
 
     // debugger
