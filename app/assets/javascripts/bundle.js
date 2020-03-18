@@ -270,8 +270,8 @@ var Chat = /*#__PURE__*/function (_React$Component) {
       var _this$props$user = this.props.user,
           f_name = _this$props$user.f_name,
           l_name = _this$props$user.l_name,
-          email = _this$props$user.email;
-      debugger;
+          email = _this$props$user.email; // debugger
+
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Welcome ", f_name, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         onClick: function onClick() {
           return _this.props.logout();
@@ -305,7 +305,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var mSTP = function mSTP(state) {
-  debugger;
+  // debugger
   return {
     user: state.entities.users
   };
@@ -578,6 +578,7 @@ var Splash = /*#__PURE__*/function (_React$Component) {
   _createClass(Splash, [{
     key: "render",
     value: function render() {
+      // debugger
       var user;
 
       if (!this.props.user) {
@@ -591,7 +592,9 @@ var Splash = /*#__PURE__*/function (_React$Component) {
           className: "start"
         }, "GET STARTED"));
       } else {
-        user = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Hello User");
+        user = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["NavLink"], {
+          to: "/users"
+        }, "Hello ", this.props.user.f_name));
       }
 
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -606,7 +609,13 @@ var Splash = /*#__PURE__*/function (_React$Component) {
         className: "scooch"
       }, "scooch")), user), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "sec1"
-      }, "Section 1"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "team"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Scooch brings teams togeher, wherever you are"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "With all of your communcation and tools in one place, remote teams will stay productive no matter where you're working from.")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        className: "slack_image",
+        src: "slack1.jpg",
+        alt: ""
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "sec2"
       }, "Section 2"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "sec3"
@@ -657,7 +666,7 @@ var mDTP = function mDTP(dispatch) {
   };
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(null, mDTP)(_splash__WEBPACK_IMPORTED_MODULE_1__["default"]));
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(mSTP, mDTP)(_splash__WEBPACK_IMPORTED_MODULE_1__["default"]));
 
 /***/ }),
 
@@ -760,10 +769,10 @@ var usersReducer = function usersReducer() {
 
   switch (action.type) {
     case _actions_session_actions__WEBPACK_IMPORTED_MODULE_0__["RECEIVE_CURRENT_USER"]:
-      debugger; // return Object.assign({}, state, {
+      // debugger
+      // return Object.assign({}, state, {
       //   [action.currentUser.id]: action.currentUser
       // });
-
       return action.currentUser;
 
     case _actions_session_actions__WEBPACK_IMPORTED_MODULE_0__["LOGOUT_CURRENT_USER"]:
@@ -831,7 +840,7 @@ window.addEventListener('DOMContentLoaded', function () {
   var store;
 
   if (window.currentUser) {
-    debugger;
+    //  debugger
     var preloadedState = {
       entities: {
         users: window.currentUser

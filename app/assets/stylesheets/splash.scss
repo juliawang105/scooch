@@ -21,8 +21,21 @@
 .sec1{
   height: 80%;
   width: 100%;
-  background-color: blue;
+  border: 1px solid blue;
+  display: flex;
 
+}
+
+.team{
+  height: 50%;
+  width: 20%;
+  border: 1px solid green;
+}
+
+.slack_image{
+  // height: 50%;
+  // width: 20%;
+  border: 1px solid green;
 }
 
 .sec2{

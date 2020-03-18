@@ -7,7 +7,7 @@ class Chat extends React.Component{
 
   render(){
     let {f_name, l_name, email} = this.props.user;
-    debugger
+    // debugger
     return(
       <div>
         Welcome {f_name}

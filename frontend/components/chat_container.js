@@ -3,7 +3,7 @@ import Chat from './chat';
 import { logout } from '../actions/session_actions'
 
 const mSTP = state => {
-  debugger
+  // debugger
   return(
     {user: state.entities.users}
   )

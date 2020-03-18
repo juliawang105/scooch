@@ -15,4 +15,4 @@ const mDTP = dispatch => {
   });
 };
 
-export default connect(null, mDTP)(Splash);
+export default connect(mSTP, mDTP)(Splash);
