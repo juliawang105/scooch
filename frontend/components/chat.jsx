@@ -6,9 +6,14 @@ class Chat extends React.Component{
   }
 
   render(){
+    let {f_name, l_name, email} = this.props.user;
     debugger
     return(
-      <div>Logged In</div>
+      <div>
+        Welcome {f_name}
+
+        <button onClick={()=> this.props.logout()}>Log Out</button>
+      </div>
     )
   }
 };

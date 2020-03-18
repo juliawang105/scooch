@@ -2,6 +2,11 @@ import { connect } from 'react-redux';
 import Splash from './splash';
 import { login, signup } from '../actions/session_actions';
 
+const mSTP = state => {
+  return({
+    user: state.entities.users
+  })
+}
 
 const mDTP = dispatch => {
   return({

@@ -16,10 +16,10 @@ const App = () => (
   
   <Switch>
     <Route path="/test" component={test}/>
-    <Route exact path="/signup" component={SignupContainer} />
-    <Route exact path="/login" component={LoginContainer} />
-    <Route exact path="/" component={SplashContainer}/>
+    <AuthRoute exact path="/signup" component={SignupContainer} />
+    <AuthRoute exact path="/login" component={LoginContainer} />
     <ProtectedRoute exact path="/users" component={ChatContainer}/>
+    <Route path="/" component={SplashContainer}/>
   </Switch>
   
   </div>
