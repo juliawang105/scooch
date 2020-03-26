@@ -1,5 +1,5 @@
 import React from 'react';
-import {NavLink} from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 
 class Splash extends React.Component{
   constructor(props){
@@ -9,7 +9,8 @@ class Splash extends React.Component{
   render(){
     // debugger
     let user; 
-    if(!this.props.user){
+    if(Object.keys(this.props.user).length === 0){
+      // debugger
       user = (
         <div className="sessions">
           <NavLink to="/login" className="signin">
@@ -21,9 +22,10 @@ class Splash extends React.Component{
         </div>
       );
     } else {
+      // debugger
       user = (
         <div>
-          <NavLink to="/users">Hello {this.props.user.f_name}</NavLink>
+          <NavLink to="/users">{this.props.user.f_name}</NavLink>
         </div>
       );
     }

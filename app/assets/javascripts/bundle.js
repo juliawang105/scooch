@@ -581,7 +581,8 @@ var Splash = /*#__PURE__*/function (_React$Component) {
       // debugger
       var user;
 
-      if (!this.props.user) {
+      if (Object.keys(this.props.user).length === 0) {
+        // debugger
         user = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "sessions"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["NavLink"], {
@@ -592,9 +593,10 @@ var Splash = /*#__PURE__*/function (_React$Component) {
           className: "start"
         }, "GET STARTED"));
       } else {
+        // debugger
         user = react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["NavLink"], {
           to: "/users"
-        }, "Hello ", this.props.user.f_name));
+        }, this.props.user.f_name));
       }
 
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
