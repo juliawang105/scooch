@@ -8,7 +8,7 @@ const receiveUser = user => ({
 });
 
 export const fetchUser = userId => dispatch => {
-  debugger
+  // debugger
   return UserUtil.fetchUser(userId)
     .then(res => dispatch(receiveUser(res)))
 };

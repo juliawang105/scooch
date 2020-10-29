@@ -5,8 +5,6 @@ import configureStore from "./store/store";
 
 window.addEventListener('DOMContentLoaded', () => {
   // debugger
- 
-  
 
    let store;
    if (window.currentUser) {
